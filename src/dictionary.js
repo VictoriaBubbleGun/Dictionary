@@ -6,10 +6,10 @@ export default function Dictionary() {
 
   function search(event) {
     event.preventDefault();
-    alert(`Searching for ${keyword}`);
   }
 
   function keywordChange(event) {
+    event.preventDefault();
     setKeyword(event.target.value);
   }
   return (
