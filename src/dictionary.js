@@ -12,11 +12,17 @@ export default function Dictionary() {
     event.preventDefault();
     setKeyword(event.target.value);
   }
+
   return (
     <div className="Dictionary m-3">
       <h1 className="text-center">Dictionary</h1>
       <form onSubmit={search} className="text-center m-4">
-        <input type="search" onChange={keywordChange} autoFocus="on" />
+        <input
+          type="search"
+          onChange={keywordChange}
+          autoFocus="on"
+          name="search"
+        />
       </form>
       <Data keyword={keyword} />
     </div>

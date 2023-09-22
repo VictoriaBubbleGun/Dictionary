@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
 
 export default function Data(props) {
   const [data, setData] = useState({});
@@ -25,14 +26,34 @@ export default function Data(props) {
   if (loaded) {
     return (
       <div className="Data">
-        {data.meanings && data.meanings.length > 0 ? (
-          <p className="text-center">{data.meanings[0].definition}</p>
-        ) : (
-          <p className="text-center">No meanings found</p>
-        )}
+        <h2 className="text-center text-captialized">{data.word}</h2>
+        {data &&
+          data.meanings &&
+          data.meanings.slice(0, 3).map(function (meaning, index) {
+            return (
+              <div key={index}>
+                <div className="text-center text-underline">
+                  Definition: {meaning.definition}
+                  <br />
+                  Part Of Speech: {meaning.partOfSpeech}
+                  <em>
+                    {meaning.synonyms &&
+                      meaning.synonyms.map(function (synonym, synonymIndex) {
+                        return (
+                          <div className="pb-3" key={synonymIndex}>
+                            Synonym: {synonym}
+                            {synonymIndex < meaning.synonyms.length - 1 && ", "}
+                          </div>
+                        );
+                      })}
+                  </em>
+                </div>
+              </div>
+            );
+          })}
       </div>
     );
   } else {
-    return <div className="Data">Loading...</div>;
+    return <div className="Data text-center">Loading...</div>;
   }
 }
