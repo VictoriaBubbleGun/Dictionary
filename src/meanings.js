@@ -1,33 +1,39 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import "./meanings.css";
 
 export default function Meanings(props) {
   let data = props.data;
 
   return (
     <div className="Data">
-      <div className="  card p-2 m-2 ">
-        <strong>{data.word}</strong>
-      </div>
-      <div className="  card p-2 m-2">
-        <strong>{data.phonetic}</strong>{" "}
-      </div>
+      {data.word && (
+        <div className="card bg-info-subtle shadow p-2 m-3">
+          <strong>{data.word}</strong>
+        </div>
+      )}
+      {data.phonetic && (
+        <div className="card bg-info-subtle shadow p-2 m-3">
+          <strong>{data.phonetic}</strong>{" "}
+        </div>
+      )}
       {data &&
         data.meanings &&
         data.meanings.slice(0, 3).map(function (meaning, index) {
           return (
             <div key={index}>
               <div className="">
-                <div className="card p-2 m-2">
+                <div className="card bg-info-subtle shadow p-2 m-3">
                   <strong> Definition:</strong> {meaning.definition}
                 </div>
-                <div className="card p-2 m-2">
+                <div className="card bg-info-subtle shadow p-2 m-3">
                   <strong> Part Of Speech:</strong> {meaning.partOfSpeech}
-                </div>{" "}
-                <div className="card p-2 m-2">
-                  <strong> Synonyms: </strong>
-                  <em>
-                    {meaning.synonyms &&
-                      meaning.synonyms.map(function (synonym, synonymIndex) {
+                </div>
+                {meaning.synonyms && meaning.synonyms.length > 0 && (
+                  <div className="card bg-info-subtle shadow p-2 m-3">
+                    <strong> Synonyms: </strong>
+                    <em>
+                      {meaning.synonyms.map(function (synonym, synonymIndex) {
                         return (
                           <li className="" key={synonymIndex}>
                             {synonym}
@@ -35,8 +41,9 @@ export default function Meanings(props) {
                           </li>
                         );
                       })}
-                  </em>{" "}
-                </div>
+                    </em>
+                  </div>
+                )}
               </div>
             </div>
           );
