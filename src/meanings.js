@@ -6,7 +6,7 @@ export default function Meanings(props) {
   let data = props.data;
 
   return (
-    <div className="Data">
+    <div>
       {data.word && (
         <div className="card bg-info-subtle shadow p-2 m-3">
           <strong>{data.word}</strong>

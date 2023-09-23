@@ -16,7 +16,7 @@ export default function Dictionary() {
 
   return (
     <div className="Dictionary m-3">
-      <h1 className="text-center">Dictionary</h1>
+      <h1 className="text-center m-3 text-white">Dictionary</h1>
       <form onSubmit={search} className="text-center m-4">
         <input
           className="form-control"
