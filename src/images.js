@@ -11,9 +11,8 @@ export default function Images(props) {
     const apiKey = "c6415ot471311fe21b9018d4f7a3003e";
     const Url = `https://api.shecodes.io/images/v1/search?query=${word}&key=${apiKey}`;
 
-    let headers = { Authorization: `Bearer ${apiKey}` };
     axios
-      .get(Url, { headers: headers })
+      .get(Url)
       .then((response) => {
         console.log(response.data);
         setImages(response.data);
@@ -30,13 +29,12 @@ export default function Images(props) {
       <div className="Images">
         <div className="row">
           {images.photos.map(function (photos, index) {
-            if (index < 6) {
+            if (index < 3) {
               return (
                 <div className="col-4" key={index}>
                   <img
-                    src={photos.url}
+                    src={photos.src.original}
                     alt={photos.alt}
-                    width={photos.width}
                     className="img-fluid"
                   />
                 </div>
