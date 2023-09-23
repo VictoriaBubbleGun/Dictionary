@@ -28,23 +28,25 @@ export default function Images(props) {
     return (
       <div className="Images">
         <div className="row">
-          {images.photos.map(function (photos, index) {
-            if (index < 3) {
-              return (
-                <div className="col-4" key={index}>
-                  <a href={photos.url} target="_blank">
-                    <img
-                      src={photos.src.original}
-                      alt={photos.alt}
-                      className="img-fluid"
-                    />
-                  </a>
-                </div>
-              );
-            } else {
-              return null;
-            }
-          })}
+          {images.photos &&
+            images.photos.length > 0 &&
+            images.photos.map(function (photos, index) {
+              if (index < 3) {
+                return (
+                  <div className="col-4" key={index}>
+                    <a href={photos.url} target="_blank">
+                      <img
+                        src={photos.src.original}
+                        alt={photos.alt}
+                        className="img-fluid"
+                      />
+                    </a>
+                  </div>
+                );
+              } else {
+                return null;
+              }
+            })}
         </div>
       </div>
     );

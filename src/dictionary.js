@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useDebounce } from "use-debounce";
 import Data from "./data";
 import "./dictionary.css";
 import Images from "./images";
 
 export default function Dictionary() {
-  let [keyword, setKeyword] = useState("woods");
+  const [keyword, setKeyword] = useState("woods");
+
+  const [debouncedKeyword] = useDebounce(keyword, 500);
 
   function search(event) {
     event.preventDefault();
@@ -26,10 +29,11 @@ export default function Dictionary() {
           autoFocus="on"
           name="search"
           placeholder="Search for a word..."
+          autoComplete="off"
         />
       </form>{" "}
-      <Data keyword={keyword} />
-      <Images word={keyword} />
+      <Data keyword={debouncedKeyword} />
+      <Images word={debouncedKeyword} />
     </div>
   );
 }
