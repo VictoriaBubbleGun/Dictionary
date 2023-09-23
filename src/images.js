@@ -32,11 +32,13 @@ export default function Images(props) {
             if (index < 3) {
               return (
                 <div className="col-4" key={index}>
-                  <img
-                    src={photos.src.original}
-                    alt={photos.alt}
-                    className="img-fluid"
-                  />
+                  <a href={photos.url} target="_blank">
+                    <img
+                      src={photos.src.original}
+                      alt={photos.alt}
+                      className="img-fluid"
+                    />
+                  </a>
                 </div>
               );
             } else {
