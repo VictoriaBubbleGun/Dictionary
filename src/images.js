@@ -28,12 +28,13 @@ export default function Images(props) {
     return (
       <div className="Images">
         <div className="row">
+          {" "}
           {images.photos &&
             images.photos.length > 0 &&
             images.photos.map(function (photos, index) {
               if (index < 3) {
                 return (
-                  <div className="col-4" key={index}>
+                  <div className="col-sm-4 mb-2 align-items-center" key={index}>
                     <a href={photos.url} target="_blank" rel="noreferrer">
                       <img
                         src={photos.src.portrait}
